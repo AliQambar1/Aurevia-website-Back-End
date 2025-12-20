@@ -1,6 +1,7 @@
 # models/user.py
 
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from .base import Base
 from passlib.context import CryptContext
 from datetime import datetime, timezone, timedelta  # New import for timestamps
@@ -19,21 +20,24 @@ class UserModel(Base):
     email = Column(String, nullable=False, unique=True)
     password_hash = Column(String, nullable=True)  # Add new field for storing the hashed password
 
+    role = Column(String, default="user", nullable=False)
+
+    listings = relationship("ListingModel", back_populates="owner")
+
     # Method to hash and store the password
     def set_password(self, password: str):
         self.password_hash = pwd_context.hash(password)
 
     def verify_password(self, password: str) -> bool:
-        return pwd_context.verify(password, self.
-        password_hash)
+        return pwd_context.verify(password, self.password_hash)
 
+    # Added indentation to make it a method of UserModel
     def generate_token(self):
         payload = {
             "exp": datetime.now(timezone.utc) + timedelta(days=1),
             "iat": datetime.now(timezone.utc),
-            "sub": self.id
+            "sub": str(self.id),
+            "role": self.role 
         }
-
         token = jwt.encode(payload, secret, algorithm="HS256")
-
         return token
