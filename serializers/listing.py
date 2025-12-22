@@ -5,7 +5,7 @@ from typing import Optional, Literal
 class ListingBase(BaseModel):
     make: str
     model_year: int
-    spec: Literal["US", "GCC", "EU"] # إجبار المستخدم على اختيار أحد هذه فقط
+    spec: Literal["US", "GCC", "EU"] 
     exterior: str
     interior: str
     price: float

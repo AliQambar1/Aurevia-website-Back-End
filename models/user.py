@@ -2,16 +2,16 @@
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from .base import Base
 from passlib.context import CryptContext
 from datetime import datetime, timezone, timedelta  # New import for timestamps
+from .base import BaseModel
 import jwt
 
 # Creating a password hashing context using bcrypt
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 from config.environment import secret
 
-class UserModel(Base):
+class UserModel(BaseModel):
 
     __tablename__ = "users"
 

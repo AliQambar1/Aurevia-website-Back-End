@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models.base import Base
 from models.user import UserModel
-from models.listing import ListingModel  # تأكد من وجود الملف
+from models.listing import ListingModel  
 from config.environment import db_URI
 
 engine = create_engine(db_URI)
@@ -11,7 +11,7 @@ SessionLocal = sessionmaker(bind=engine)
 db = SessionLocal()
 
 print("Recreating database...")
-# حذف الجداول القديمة وإنشاء الجديدة (بما فيها listings)
+
 Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 

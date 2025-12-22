@@ -1,6 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from config.environment import db_URI
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()
 
 # Connect FastAPI with SQLAlchemy
 engine = create_engine(

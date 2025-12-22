@@ -1,7 +1,7 @@
 # models/listing.py
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Enum
 from sqlalchemy.orm import relationship
-from .base import Base
+from .base import BaseModel
 import enum
 
 
@@ -14,7 +14,7 @@ class StatusEnum(str, enum.Enum):
     Available = "Available"
     Sold = "Sold"
 
-class ListingModel(Base):
+class ListingModel(BaseModel):
     __tablename__ = "listings"
 
     id = Column(Integer, primary_key=True, index=True)
