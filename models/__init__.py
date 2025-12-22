@@ -5,6 +5,7 @@ from .base import BaseModel
 # Import modules, not classes, to avoid circular imports between request/property/notification.
 from . import user  # defines UserModel
 from . import listing
+from . import inquiry
 # add future models here as needed
 
 __all__ = ["BaseModel"]
