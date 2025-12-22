@@ -23,6 +23,7 @@ class UserModel(BaseModel):
     role = Column(String, default="user", nullable=False)
 
     listings = relationship("ListingModel", back_populates="owner")
+    inquiries = relationship("InquiryModel", back_populates="user")
 
     # Method to hash and store the password
     def set_password(self, password: str):
