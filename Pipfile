@@ -7,6 +7,11 @@ name = "pypi"
 pydantic = "*"
 bcrypt = "4.0.1"
 alembic = "*"
+passlib = "*"
+sqlalchemy = "*"
+uvicorn = "*"
+fastapi = "*"
+cloudinary = "*"
 
 [dev-packages]
 

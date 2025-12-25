@@ -40,3 +40,5 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(http_be
 
     # Return the user if the token is valid
     return user
+
+

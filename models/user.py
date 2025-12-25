@@ -20,7 +20,7 @@ class UserModel(BaseModel):
     email = Column(String, nullable=False, unique=True)
     password_hash = Column(String, nullable=True)  # Add new field for storing the hashed password
 
-    role = Column(String, default="user", nullable=False)
+    role = Column(String, default="user", nullable=True)
 
     listings = relationship("ListingModel", back_populates="owner")
     inquiries = relationship("InquiryModel", back_populates="user")
