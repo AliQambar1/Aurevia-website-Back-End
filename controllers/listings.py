@@ -34,7 +34,7 @@ def get_listing(listing_id: int, db: Session = Depends(get_db)):
     return listing
 
 
-# ✅ UPDATED: Parse images from JSON string
+# UPDATED: Parse images from JSON string
 @router.post("/", response_model=ListingResponse)
 def create_listing(
     make: str = Form(...),
@@ -52,7 +52,7 @@ def create_listing(
 ):
     check_admin_role(current_user)
 
-    # ✅ Parse the JSON string into a list
+    # Parse the JSON string into a list
     try:
         image_list = json.loads(images)
     except json.JSONDecodeError:
@@ -70,7 +70,7 @@ def create_listing(
         interior=interior,
         price=price,
         status=status,
-        images=image_list,  # ✅ Use parsed list
+        images=image_list,  #  Use parsed list
         notes=notes,
         owner_id=current_user.id
     )
