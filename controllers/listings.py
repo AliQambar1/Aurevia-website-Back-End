@@ -98,7 +98,7 @@ def get_listing(listing_id: int, db: Session = Depends(get_db)):
                 joined = joined.strip('{}')
                 # Split by comma
                 listing.images = [url.strip() for url in joined.split(',') if url.strip()]
-                print(f"✅ Fixed to: {listing.images}")
+                print(f" Fixed to: {listing.images}")
             else:
                 # Filter to keep only valid URLs
                 listing.images = [img for img in listing.images if isinstance(img, str) and img.startswith('http')]
@@ -107,8 +107,8 @@ def get_listing(listing_id: int, db: Session = Depends(get_db)):
     else:
         listing.images = []
     
-    print(f"📤 Returning images: {listing.images}")
-    print(f"📊 Count: {len(listing.images)}\n")
+    print(f" Returning images: {listing.images}")
+    print(f"Count: {len(listing.images)}\n")
     
     return listing
 
